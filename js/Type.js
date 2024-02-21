@@ -17,3 +17,5 @@ class Type {
 console.log(pokemon_types[0]);
 
 let t1 = new Type("Normal", 1, "Grass");
+
+console.log(t1.toString());
