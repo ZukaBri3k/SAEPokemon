@@ -14,6 +14,6 @@ class Type {
     }
 }
 
-console.log(type[0]);
+console.log(Type[0]);
 
 let t1 = new Type("Normal", 1, "Grass");
