@@ -14,6 +14,6 @@ class Type {
     }
 }
 
-console.log(Type[0]);
+console.log(pokemon_types[0]);
 
 let t1 = new Type("Normal", 1, "Grass");
