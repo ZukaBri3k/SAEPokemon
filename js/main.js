@@ -1,0 +1,1 @@
+let titre = $('h1').addClass("TEST");
