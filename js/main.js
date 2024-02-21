@@ -1,1 +1,3 @@
-let titre = $('h1').addClass("TEST");
+class Pokemon {
+    constructor()
+}
