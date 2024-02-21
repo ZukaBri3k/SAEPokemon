@@ -19,6 +19,19 @@ class Pokemon {
     }
 }
 
-console.log(pokemon[0]);
+function import_pokemon() {
+    let all_pokemons = [];
+
+    pokemon.forEach((p) => {
+
+        if(p.form == "Normal") {
+            all_pokemons[p.pokemon_id] = new Pokemon(p.pokemon_id, p.pokemon_name, p.base_stamina, p.base_defense, p.base_attack);
+        }
+    })
+
+    return all_pokemons;
+}
+
+console.log(import_pokemon());
 
 let p1 = new Pokemon(1, "Bulbasaur", "Normal", 90, 126, 118);
