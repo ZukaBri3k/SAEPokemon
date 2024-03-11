@@ -1,21 +1,39 @@
 class Type {
+
+    static all_types = [
+        "Bug",
+        "Dark",
+        "Dragon",
+        "Electric",
+        "Fairy",
+        "Fighting",
+        "Fire",
+        "Flying",
+        "Ghost",
+        "Grass",
+        "Ground",
+        "Ice",
+        "Normal",
+        "Poison",
+        "Psychic",
+        "Rock",
+        "Steel",
+        "Water"
+    ]    
+
     constructor(
-        form,
         pokemon_id,
-        type
     ) {
-        this.form = form;
         this.pokemon_id = pokemon_id;
-        this.type = type;
     }
 
     toString() {
-        return `${this.form} ${this.type}`;
+        return pokemon_types[this.pokemon_id];
     }
 }
 
-console.log(pokemon_types[0]);
+//console.log(pokemon_types[0]);
 
-let t1 = new Type("Normal", 1, "Grass");
+let t1 = new Type(3);
 
 console.log(t1.toString());
