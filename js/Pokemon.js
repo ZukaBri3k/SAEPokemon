@@ -17,6 +17,10 @@ class Pokemon {
     toString() {
         return `${this.pokemon_name} ${this.form}`;
     }
+
+    getTypes() {
+        return pokemon_types[this.pokemon_id];
+    }
 }
 
 function import_pokemon() {
@@ -35,3 +39,4 @@ function import_pokemon() {
 console.log(import_pokemon());
 
 let p1 = new Pokemon(1, "Bulbasaur", "Normal", 90, 126, 118);
+console.log(p1.getTypes());
