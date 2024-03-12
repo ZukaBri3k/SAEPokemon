@@ -23,7 +23,6 @@ class Type {
 
     constructor(
         pokemon_id,
-        type
     ) {
         this.pokemon_id = pokemon_id;
         let test = pokemon_types.find((_type) => _type.pokemon_id === pokemon_id && _type.form === "Normal");
