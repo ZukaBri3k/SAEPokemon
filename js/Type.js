@@ -35,7 +35,6 @@ class Type {
     }
 }
 
-
 function import_type() {
     let all_types = [];
 
