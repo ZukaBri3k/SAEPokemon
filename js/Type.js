@@ -22,7 +22,6 @@ class Type {
     ]    
 
     constructor(
-        pokemon_id,
         type
     ) {
         this.Type_effectiveness = type_effectiveness[type]
