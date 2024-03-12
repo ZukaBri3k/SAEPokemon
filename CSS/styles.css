@@ -1,0 +1,66 @@
+body header {
+  background-color: #f0f0f0;
+  padding: 10px;
+  text-align: center;
+}
+body header h1 {
+  margin: auto;
+}
+
+body footer {
+  background-color: #f0f0f0;
+  padding: 10px;
+  text-align: center;
+}
+body footer div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+body footer div em {
+  font-size: 1em;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+}
+main .card {
+  background-color: #f7d8d8;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+  width: 31%;
+}
+main .card:hover {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+main .card img {
+  width: 40%;
+  height: 85%;
+}
+main .card p {
+  margin: 10px;
+  font-size: 1.2em;
+}
+main .card table {
+  width: 100%;
+  text-align: left;
+  margin: 10px;
+  border: solid 1px #000;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+main .card table tr :nth-child(odd) {
+  background-color: #e0e0e0;
+}
+main .card table tr :nth-child(even) td {
+  padding: 5px;
+}/*# sourceMappingURL=styles.css.map */
