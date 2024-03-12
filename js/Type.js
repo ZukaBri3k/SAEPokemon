@@ -20,17 +20,16 @@ class Type {
         "Steel",
         "Water"
     ]    
-
+ 
     constructor(
-        pokemon_id,
+        type
     ) {
-        this.pokemon_id = pokemon_id;
-        let test = pokemon_types.find((_type) => _type.pokemon_id === pokemon_id && _type.form === "Normal");
-        this.type = test.type;
+        this.Type_effectiveness = type_effectiveness[type]
+        this.type = type
     }
 
     toString() {
-        return pokemon_types[this.pokemon_id];
+        return `type : ${this.type}, type_effectiveness : ${this.Type_effectiveness}`;
     }
 }
 
@@ -40,13 +39,13 @@ function import_type() {
     pokemon_types.forEach((p) => {
 
         if(p.form == "Normal") {
-            all_types[p.pokemon_id] = new Type(p.pokemon_id, p.type);
+            all_types[p.pokemon_id] = p.type.map((type) => new Type(type));
         }
     })
 
     return all_types;
 }
 
-//console.log(pokemon_types[0]);
+/* console.log(pokemon_types[0]); */
 
 /* console.log(import_type()); */
