@@ -80,5 +80,24 @@ function getPokemonsByAttackName(attackName) {
     })))
 }
 
-console.log(allPokemons)
-console.log(getPokemonsByAttackName("Vine Whip"))
+function sortPokemonByName() {
+    return allPokemons.sort((a, b) => {
+        if(a.pokemon_name < b.pokemon_name) { 
+            return -1
+        } else if(a.pokemon_name > b.pokemon_name) {
+            return 1
+        } else {
+            return 0
+        }
+    })
+}
+
+function sortPokemonByStamina() {
+    return allPokemons.sort((a, b) => {
+        return a.base_stamina - b.base_stamina
+    })
+
+}
+
+//console.log(allPokemons)
+console.log(sortPokemonByStamina())
