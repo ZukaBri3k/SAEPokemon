@@ -24,6 +24,8 @@ body footer div em {
 main {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 main .card {
   background-color: #f7d8d8;
@@ -37,7 +39,7 @@ main .card {
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   transition: 0.3s;
-  width: 31%;
+  width: 30vw;
 }
 main .card:hover {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
