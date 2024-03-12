@@ -20,7 +20,7 @@ class Type {
         "Steel",
         "Water"
     ]    
-
+ 
     constructor(
         type
     ) {
