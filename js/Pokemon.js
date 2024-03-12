@@ -70,6 +70,15 @@ function import_pokemon() {
     return all_pokemons;
 }
 
-let test = import_pokemon()
+let allPokemons = import_pokemon()
 
-console.log(test[1].get_attacks())
+function getPokemonsByAttackName(attackName) {
+    return allPokemons.filter(pokemon => (pokemon.charged_moves.find((_move) => _move.name == attackName)) || (pokemon.fast_moves.find((_move) => {
+        if(_move != undefined) {
+            return _move.name == attackName
+        }
+    })))
+}
+
+console.log(allPokemons)
+console.log(getPokemonsByAttackName("Vine Whip"))
