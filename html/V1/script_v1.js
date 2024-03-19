@@ -13,7 +13,7 @@ function createCard(pokemon) {
     
     card.innerHTML = `
         <p class="name">${pokemon.pokemon_name}</p>
-        <img src="../img/images/${pokemon_image}" alt="${pokemon.pokemon_name}" class="card-image">
+        <img src="../webp/images/${pokemon_image}" alt="${pokemon.pokemon_name}" class="card-image">
         <table class="${pokemon.pokemon_type}">
             <tbody>
             <tr>
@@ -39,6 +39,7 @@ function createCard(pokemon) {
     return card;
 }
 
+const allPokemons = Pokemon.all_pokemons;
 allPokemons.forEach(pokemon => {
     const card = createCard(pokemon);
     let main = document.querySelector('main');
