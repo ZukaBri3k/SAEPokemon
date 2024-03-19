@@ -61,21 +61,29 @@ main {
         }
 
         table {
-            width: 100%;
-            text-align: left;
-            margin: 10px;
-            border: solid 1px #000;
-            table-layout: fixed;
-            border-collapse : collapse;
+            margin-left: 1em;
             tr {
-                :nth-child(odd) {
-                    background-color: #e0e0e0;
-                }
-
-                :nth-child(even)
-
-                td {
+                display: table-row;
+                vertical-align: inherit;
+                border-color: inherit;
+                border-collapse: separate;
+                color: black;
+                font-size: 100%;
+                text-indent: initial;
+                border-spacing: 2px;
+                line-height: 1.6;
+                th {
+                    text-align: right;
+                    border-radius: 3px;
                     padding: 5px;
+                    vertical-align: middle;
+                    background-color: #3DA224 !important;
+                }
+                td {
+                    background-color: #fcfcfc;
+                    padding: 5px;
+                    border-radius: 5px;
+                    border: solid 1px #3DA224;
                 }
             }
         }
