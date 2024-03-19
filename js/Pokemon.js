@@ -6,7 +6,8 @@ class Pokemon {
         base_defense,
         base_attack,
         charged_moves,
-        fast_moves
+        fast_moves,
+        type
     ) {
         this.pokemon_id = pokemon_id;
         this.pokemon_name = pokemon_name;
@@ -16,6 +17,7 @@ class Pokemon {
         this.base_attack = base_attack;
         this.charged_moves = charged_moves
         this.fast_moves = fast_moves
+        this.type = type.map((type) => new Type(type));
     }
 
     toString() {
@@ -40,7 +42,7 @@ function import_pokemon() {
                 let res = charged_moves.find((_move) => _move.name == _pokemon_move)
                 res = new Attack(res.name, res.duration, res.critical_chance, res.energy_delta, res.move_id, res.power, res.stamina_loss_scaler, res.type)
 
-                if (!Attack.all_attacks.includes(res)) {
+                if (!Attack.all_attacks.some((_attack) => _attack.move_id == res.move_id)) {
                     Attack.all_attacks.push(res)
                 }
 
@@ -55,15 +57,16 @@ function import_pokemon() {
                 if(res != undefined) {
                     res = new Attack(res.name, res.duration, res.critical_chance, res.energy_delta, res.move_id, res.power, res.stamina_loss_scaler, res.type)
 
-                    if (!Attack.all_attacks.includes(res)) {
+                    if (!Attack.all_attacks.some((_attack) => _attack.move_id == res.move_id)) {
                         Attack.all_attacks.push(res)
                     }
                 }
 
                 return res
             })
+            let type = pokemon_types.find((_type) => _type.pokemon_id == p.pokemon_id).type
 
-            all_pokemons[p.pokemon_id] = new Pokemon(p.pokemon_id, p.pokemon_name, p.base_stamina, p.base_defense, p.base_attack, charged_moves_pokemon, fast_moves_pokemon);
+            all_pokemons[p.pokemon_id] = new Pokemon(p.pokemon_id, p.pokemon_name, p.base_stamina, p.base_defense, p.base_attack, charged_moves_pokemon, fast_moves_pokemon, type);
         }
     })
 
@@ -72,12 +75,20 @@ function import_pokemon() {
 
 let allPokemons = import_pokemon()
 
+function getPokemonByType(type) {
+    return allPokemons.filter(pokemon => pokemon.type.find((_type) => _type.type == type)) 
+}
+
 function getPokemonsByAttackName(attackName) {
     return allPokemons.filter(pokemon => (pokemon.charged_moves.find((_move) => _move.name == attackName)) || (pokemon.fast_moves.find((_move) => {
         if(_move != undefined) {
             return _move.name == attackName
         }
     })))
+}
+
+function getAttackByType(type) {
+    return Attack.all_attacks.filter(attack => attack.type.type == type)
 }
 
 function sortPokemonByName() {
@@ -99,5 +110,11 @@ function sortPokemonByStamina() {
 
 }
 
-//console.log(allPokemons)
-console.log(sortPokemonByStamina())
+function getWeakestEnemies(attack) {
+    /* let weakestType = attack.type.Type_Effectiveness.sort((a, b) => {
+        return a.damage - b.damage
+    }) */
+}
+
+console.log(getAttackByType("Water"))
+//console.log()
