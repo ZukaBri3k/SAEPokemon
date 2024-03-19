@@ -9,8 +9,49 @@ function createCard(pokemon) {
     } else {
         pokemon_image = pokemon.pokemon_id + ".webp";
     }
-
     
+    let charged_moves = '';
+    pokemon.charged_moves.forEach(move => {
+        charged_moves += `${move.name}`;
+
+        charged_moves += `- Critical Chance : ${move.critical_chance}\n`;
+        charged_moves += `- Duration : ${move.duration}\n`;
+        charged_moves += `- Energy Delta : ${move.energy_delta}\n`;
+        charged_moves += `- Power : ${move.power}\n`;
+        charged_moves += `- Stamina Loss Scaler : ${move.stamina_loss_scaler}\n`;
+        charged_moves += `- Type : ${move.type.type}\n`;
+
+        if(move != pokemon.charged_moves[pokemon.charged_moves.length - 1]) {
+            charged_moves += ' | ';
+            charged_moves += '<br>';
+        }
+    });
+
+    let fast_moves = '';
+    pokemon.fast_moves.forEach(move => {
+        fast_moves += `${move.name}`;
+
+        fast_moves += `- Critical Chance : ${move.critical_chance}\n`;
+        fast_moves += `- Duration : ${move.duration}\n`;
+        fast_moves += `- Energy Delta : ${move.energy_delta}\n`;
+        fast_moves += `- Power : ${move.power}\n`;
+        fast_moves += `- Stamina Loss Scaler : ${move.stamina_loss_scaler}\n`;
+        fast_moves += `- Type : ${move.type.type}\n`;
+
+        if(move != pokemon.fast_moves[pokemon.fast_moves.length - 1]) {
+            fast_moves += ' | ';
+            fast_moves += '<br>';
+        }
+    });
+
+    let type = '';
+    pokemon.type.forEach(t => {
+        type += `${t.type}`;
+        if(t != pokemon.type[pokemon.type.length - 1]) {
+            type += ' | ';
+        }
+    });
+
     card.innerHTML = `
         <p class="name">${pokemon.pokemon_name}</p>
         <img src="../webp/images/${pokemon_image}" alt="${pokemon.pokemon_name}" class="card-image">
@@ -20,18 +61,27 @@ function createCard(pokemon) {
                 <th>Pokemon ID</th>
                 <td class="id">${pokemon.pokemon_id}</td>
             </tr>
+            <tr>
                 <th>Charged moves</th>
-                <td class="charged_moves">${pokemon.charged_moves}</td>
+                <td class="charged_moves">${charged_moves}</td>
             </tr>
+            <tr>
                 <th>Fast moves</th>
-                <td class="fast_moves">${pokemon.fast_moves}</td>
+                <td class="fast_moves">${fast_moves}</td>
             </tr>
+            <tr>
                 <th>Form</th>
                 <td class="form">${pokemon.form}</td>
             </tr>
             <tr>
                 <th>Type</th>
-                <td class="id">${pokemon.pokemon_type}</td>
+                <td class="id">${type}</td>
+            </tr>
+            <tr>
+                <th>Stats</th>
+                <td class="id">Attack : ${pokemon.base_attack} |
+                            Defense : ${pokemon.base_defense} |
+                            Stamina : ${pokemon.base_stamina}</td>
             </tr>
             </tbody>
         </table>
