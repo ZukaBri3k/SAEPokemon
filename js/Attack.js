@@ -10,7 +10,7 @@ class Attack {
         this.move_id = move_id
         this.power = power
         this.stamina_loss_scaler = stamina_loss_scaler
-        this.type = type       
+        this.type = new Type(type)       
     }
 
     toString () {
