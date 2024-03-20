@@ -48,6 +48,18 @@ function handlePokemonType() {
 
 }
 
+function getBestAttackTypesForEnemy(name) {
+    let bestAttack = Pokemon.all_pokemons.find(pokemon => pokemon.pokemon_name == name).type.map((_type) => {
+        let type = Type.all_types.find(type => type.type == _type.type)
+        return type.type
+    })
+}
+
+console.log(Pokemon.all_pokemons)
+console.log(Pokemon.all_pokemons.find((pokemon) => pokemon.pokemon_name == "Bulbasaur"))
+
+/* console.table(getBestAttackTypesForEnemy("Bulbasaur")) */
+/*
 console.log("Récupérer les pokémons ayant l'attaque 'Poison Jab'")
 console.log(getPokemonsByAttackName("Poison Jab"))
 console.log("------------------------------------------------------------")
@@ -62,4 +74,4 @@ console.log("------------------------------------------------------------")
 
 console.log("Trier les pokémons par stamina")
 console.log(sortPokemonByStamina())
-console.log("------------------------------------------------------------")
+console.log("------------------------------------------------------------") */
