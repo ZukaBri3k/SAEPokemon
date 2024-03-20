@@ -34,19 +34,34 @@ function sortPokemonByStamina() {
 }
 
 function getWeakestEnemies(attack) {
-    let weakestType = attack.type.Type_Effectiveness.sort((a, b) => {
-        return a.damage - b.damage
+    let currentAttackType = Attack.all_attacks.find(_attack => _attack.name == attack).type.Type_effectiveness
+    console.log(currentAttackType)
+    let WeakestPokemons = Pokemon.all_pokemons.filter(pokemon => {
+
+        let multiplier = 1
+        pokemon.type.forEach(element => {
+            multiplier *= currentAttackType[element.type]
+        })
+        
+        if(multiplier > 1) {
+            return pokemon
+        }
     })
+
+    console.log(WeakestPokemons)
 }
+
+
+
 
 
 function handlePokemonType() {
     let type = document.getElementById("type").value
-    console.log(type)
     let pokemons = getPokemonByType(type)
     console.table(pokemons)
 
 }
+
 
 function getBestAttackTypesForEnemy(name) {
     let bestAttack = Pokemon.all_pokemons.find(pokemon => pokemon.pokemon_name == name).type.map((_type) => {
@@ -59,7 +74,36 @@ console.log(Pokemon.all_pokemons)
 console.log(Pokemon.all_pokemons.find((pokemon) => pokemon.pokemon_name == "Bulbasaur"))
 
 /* console.table(getBestAttackTypesForEnemy("Bulbasaur")) */
-/*
+
+function handlePokemonByAttackName() {
+    let attack = document.getElementById("attack").value
+    let pokemons = getPokemonsByAttackName(attack)
+    console.table(pokemons)
+}
+
+function handleAttackByType() {
+    let type = document.getElementById("type").value
+    let attacks = getAttackByType(type)
+    console.table(attacks)
+}
+
+function handleSortPokemonByName() {
+    let pokemons = sortPokemonByName()
+    console.table(pokemons)
+}
+
+function handleSortPokemonByStamina() {
+    let pokemons = sortPokemonByStamina()
+    console.table(pokemons)
+}
+
+function handleWeakestEnemies() {
+    let attack = document.getElementById("attack").value
+    let pokemons = getWeakestEnemies(attack)
+
+}
+
+
 console.log("Récupérer les pokémons ayant l'attaque 'Poison Jab'")
 console.log(getPokemonsByAttackName("Poison Jab"))
 console.log("------------------------------------------------------------")
@@ -74,4 +118,9 @@ console.log("------------------------------------------------------------")
 
 console.log("Trier les pokémons par stamina")
 console.log(sortPokemonByStamina())
-console.log("------------------------------------------------------------") */
+console.log("------------------------------------------------------------")
+
+
+
+console.log(Pokemon.all_pokemons.find(pokemon => pokemon.pokemon_name == "Bulbasaur"))
+
