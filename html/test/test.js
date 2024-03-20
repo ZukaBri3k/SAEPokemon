@@ -62,6 +62,19 @@ function handlePokemonType() {
 
 }
 
+
+function getBestAttackTypesForEnemy(name) {
+    let bestAttack = Pokemon.all_pokemons.find(pokemon => pokemon.pokemon_name == name).type.map((_type) => {
+        let type = Type.all_types.find(type => type.type == _type.type)
+        return type.type
+    })
+}
+
+console.log(Pokemon.all_pokemons)
+console.log(Pokemon.all_pokemons.find((pokemon) => pokemon.pokemon_name == "Bulbasaur"))
+
+/* console.table(getBestAttackTypesForEnemy("Bulbasaur")) */
+
 function handlePokemonByAttackName() {
     let attack = document.getElementById("attack").value
     let pokemons = getPokemonsByAttackName(attack)
@@ -90,6 +103,7 @@ function handleWeakestEnemies() {
 
 }
 
+
 console.log("Récupérer les pokémons ayant l'attaque 'Poison Jab'")
 console.log(getPokemonsByAttackName("Poison Jab"))
 console.log("------------------------------------------------------------")
@@ -107,4 +121,6 @@ console.log(sortPokemonByStamina())
 console.log("------------------------------------------------------------")
 
 
+
 console.log(Pokemon.all_pokemons.find(pokemon => pokemon.pokemon_name == "Bulbasaur"))
+
