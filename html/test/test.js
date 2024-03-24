@@ -147,7 +147,7 @@ function getBestAttackTypesForEnemy(name) {
         return attackTypes
 })
 bestAttackTypes = [... new Set(bestAttackTypes.flat())]
-console.log(bestAttackTypes)
+console.table(bestAttackTypes)
 }
 
 function handleBestAttackTypesForEnemy() {
