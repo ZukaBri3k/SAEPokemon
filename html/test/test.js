@@ -52,28 +52,12 @@ function getWeakestEnemies(attack) {
 }
 
 
-
-
-
 function handlePokemonType() {
     let type = document.getElementById("type").value
     let pokemons = getPokemonByType(type)
     console.table(pokemons)
 
 }
-
-
-function getBestAttackTypesForEnemy(name) {
-    let bestAttack = Pokemon.all_pokemons.find(pokemon => pokemon.pokemon_name == name).type.map((_type) => {
-        let type = Type.all_types.find(type => type.type == _type.type)
-        return type.type
-    })
-}
-
-console.log(Pokemon.all_pokemons)
-console.log(Pokemon.all_pokemons.find((pokemon) => pokemon.pokemon_name == "Bulbasaur"))
-
-/* console.table(getBestAttackTypesForEnemy("Bulbasaur")) */
 
 function handlePokemonByAttackName() {
     let attack = document.getElementById("attack").value
@@ -104,6 +88,7 @@ function handleWeakestEnemies() {
 }
 
 
+
 console.log("Récupérer les pokémons ayant l'attaque 'Poison Jab'")
 console.log(getPokemonsByAttackName("Poison Jab"))
 console.log("------------------------------------------------------------")
@@ -121,6 +106,52 @@ console.log(sortPokemonByStamina())
 console.log("------------------------------------------------------------")
 
 
+/* function getBestAttackTypesForEnemy(name) {
+    let bestAttack = Pokemon.all_pokemons.find(pokemon => pokemon.pokemon_name == name).type.map((_type) => {
 
-console.log(Pokemon.all_pokemons.find(pokemon => pokemon.pokemon_name == "Bulbasaur"))
+        type_effectiveness.forEach((type) => {
+            if(type.type == _type.type) {
+                _type.effectiveness = type
+                console.log(_type)
+            }
+        })
+        
+        let attacks = Attack.all_attacks.filter(attack => attack.type.type == type);
+        attacks.sort((a, b) => b.power - a.power);
+        return attacks[0];
+    });
 
+    return bestAttack;
+} */
+
+function getBestAttackTypesForEnemy(name) {
+    let bestAttackTypes = Pokemon.all_pokemons.find(_pokemon => _pokemon.pokemon_name == name).type.map((currentPokemonType) => {
+        let attackTypes = []
+        Attack.all_attacks.forEach(attack => {
+            let multiplier = 1
+            multiplier *= attack.type.Type_effectiveness[currentPokemonType.type]
+
+            Pokemon.all_pokemons.find(_pokemon => _pokemon.pokemon_name == name).type.map((currentPokemonType2) => {
+                if(currentPokemonType2 != currentPokemonType) {
+                    multiplier *= attack.type.Type_effectiveness[currentPokemonType2.type]
+                }
+            })
+            if(attack.type.Type_effectiveness[currentPokemonType.type + 1] != undefined) {
+                multiplier *= attack.type.Type_effectiveness[currentPokemonType.type + 1]
+            }
+            
+            if(multiplier > 1) {
+                attackTypes.push(attack.type.type)
+            }
+        })
+        return attackTypes
+})
+bestAttackTypes = [... new Set(bestAttackTypes.flat())]
+console.log(bestAttackTypes)
+}
+
+function handleBestAttackTypesForEnemy() {
+    let pokemon_name = document.getElementById("pokemon_name").value
+    let bestAttack = getBestAttackTypesForEnemy(pokemon_name)
+    console.table(bestAttack)
+}
