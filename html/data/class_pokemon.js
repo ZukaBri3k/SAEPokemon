@@ -75,7 +75,7 @@ class Pokemon {
                 Object.keys(generation).forEach((_generation) => {
                     let gen = generation[_generation].find((_pokemon) => _pokemon["name"] == p.pokemon_name)
 
-                    if(test != undefined) {
+                    if(gen != undefined) {
                         generationPokemon = gen["generation_number"]
                     }
                 })
