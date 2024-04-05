@@ -10,7 +10,8 @@ class Pokemon {
         base_attack,
         charged_moves,
         fast_moves,
-        type
+        type,
+        generation
     ) {
         this.pokemon_id = pokemon_id;
         this.pokemon_name = pokemon_name;
@@ -21,6 +22,7 @@ class Pokemon {
         this.charged_moves = charged_moves
         this.fast_moves = fast_moves
         this.type = type.map((type) => new Type(type));
+        this.generation = generation;
     }
 
     toString() {
@@ -67,8 +69,18 @@ class Pokemon {
                     return res
                 })
                 let type = pokemon_types.find((_type) => _type.pokemon_id == p.pokemon_id).type
+
+                let generationPokemon;
+
+                Object.keys(generation).forEach((_generation) => {
+                    let gen = generation[_generation].find((_pokemon) => _pokemon["name"] == p.pokemon_name)
+
+                    if(gen != undefined) {
+                        generationPokemon = gen["generation_number"]
+                    }
+                })
     
-                all_pokemons[p.pokemon_id] = new Pokemon(p.pokemon_id, p.pokemon_name, p.base_stamina, p.base_defense, p.base_attack, charged_moves_pokemon, fast_moves_pokemon, type);
+                all_pokemons[p.pokemon_id] = new Pokemon(p.pokemon_id, p.pokemon_name, p.base_stamina, p.base_defense, p.base_attack, charged_moves_pokemon, fast_moves_pokemon, type, generationPokemon);
             }
         })
     
