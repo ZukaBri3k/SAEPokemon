@@ -27,32 +27,15 @@ main {
   justify-content: center;
   align-items: center;
 }
-main .card {
-  background-color: #f7d8d8;
-  padding: 10px;
-  margin: 10px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-  transition: 0.3s;
-  width: 30vw;
-}
-main .card:hover {
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-}
-main .card img {
+main img {
   width: 40%;
   height: 85%;
 }
-main .card p {
+main p {
   margin: 10px;
   font-size: 1.2em;
 }
-main .card table {
+main table {
   width: 100%;
   text-align: left;
   margin: 10px;
@@ -60,9 +43,19 @@ main .card table {
   table-layout: fixed;
   border-collapse: collapse;
 }
-main .card table tr :nth-child(odd) {
+main table tr {
+  border-bottom: 2px solid black;
+}
+main table tr :nth-child(odd) {
   background-color: #e0e0e0;
 }
-main .card table tr :nth-child(even) td {
+main table tr :nth-child(even) {
+  background-color: #f2f2f2;
+}
+main table tr td {
   padding: 5px;
+}
+main table th, main table td {
+  padding: 10px;
+  border: 1px solid black;
 }/*# sourceMappingURL=styles.css.map */
