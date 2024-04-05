@@ -88,24 +88,6 @@ function handleWeakestEnemies() {
 }
 
 
-
-console.log("Récupérer les pokémons ayant l'attaque 'Poison Jab'")
-console.log(getPokemonsByAttackName("Poison Jab"))
-console.log("------------------------------------------------------------")
-
-console.log("Récupérer les attaques de type 'Poison'")
-console.log(getAttackByType("Poison"))
-console.log("------------------------------------------------------------")
-
-console.log("Trier les pokémons par nom")
-console.log(sortPokemonByName())
-console.log("------------------------------------------------------------")
-
-console.log("Trier les pokémons par stamina")
-console.log(sortPokemonByStamina())
-console.log("------------------------------------------------------------")
-
-
 /* function getBestAttackTypesForEnemy(name) {
     let bestAttack = Pokemon.all_pokemons.find(pokemon => pokemon.pokemon_name == name).type.map((_type) => {
 
