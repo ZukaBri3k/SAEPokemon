@@ -1,6 +1,4 @@
 function createCard(pokemon) {
-    const card = document.createElement('div');
-    card.classList.add('card');
     let pokemon_image;
     if(pokemon.pokemon_id < 9) {
         pokemon_image = "00" + pokemon.pokemon_id + ".webp";
@@ -9,40 +7,6 @@ function createCard(pokemon) {
     } else {
         pokemon_image = pokemon.pokemon_id + ".webp";
     }
-    
-    let charged_moves = '';
-    pokemon.charged_moves.forEach(move => {
-        charged_moves += `${move.name}`;
-
-        charged_moves += `- Critical Chance : ${move.critical_chance}\n`;
-        charged_moves += `- Duration : ${move.duration}\n`;
-        charged_moves += `- Energy Delta : ${move.energy_delta}\n`;
-        charged_moves += `- Power : ${move.power}\n`;
-        charged_moves += `- Stamina Loss Scaler : ${move.stamina_loss_scaler}\n`;
-        charged_moves += `- Type : ${move.type.type}\n`;
-
-        if(move != pokemon.charged_moves[pokemon.charged_moves.length - 1]) {
-            charged_moves += ' | ';
-            charged_moves += '<br>';
-        }
-    });
-
-    let fast_moves = '';
-    pokemon.fast_moves.forEach(move => {
-        fast_moves += `${move.name}`;
-
-        fast_moves += `- Critical Chance : ${move.critical_chance}\n`;
-        fast_moves += `- Duration : ${move.duration}\n`;
-        fast_moves += `- Energy Delta : ${move.energy_delta}\n`;
-        fast_moves += `- Power : ${move.power}\n`;
-        fast_moves += `- Stamina Loss Scaler : ${move.stamina_loss_scaler}\n`;
-        fast_moves += `- Type : ${move.type.type}\n`;
-
-        if(move != pokemon.fast_moves[pokemon.fast_moves.length - 1]) {
-            fast_moves += ' | ';
-            fast_moves += '<br>';
-        }
-    });
 
     let type = '';
     pokemon.type.forEach(t => {
@@ -53,18 +17,25 @@ function createCard(pokemon) {
     });
 
     
-    $('#main').append(`<img src="../webp/images/${pokemon_image}" alt="${pokemon.name}">`);
+    $(".card-image").attr('src', `../webp/images/${pokemon_image}`);
 
-    $('#id').append(`${pokemon.pokemon_id}`);
+    $('.id').append(`${pokemon.pokemon_id}`);
 
-    $('#name').append(`${pokemon.name}`);
+    $('.generation').append(`${pokemon.generation}`);
 
+    $('.name').append(document.createTextNode(pokemon.pokemon_name));
+
+    $('.type').append(document.createTextNode(type));
+
+    $('.stamina').append(document.createTextNode(pokemon.base_stamina));
+
+    $('.defense').append(document.createTextNode(pokemon.base_defense));
+
+    $('.attaque').append(document.createTextNode(pokemon.base_attack));
     
 }
 
 const allPokemons = Pokemon.all_pokemons;
-allPokemons.forEach(pokemon => {
-    const card = createCard(pokemon);
-    let main = document.querySelector('main');
-    main.appendChild(card);
-});
+createCard(allPokemons[1]);
+
+console.log(allPokemons[1]);
