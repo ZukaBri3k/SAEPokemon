@@ -9,7 +9,7 @@ function createTableau(pokemon) {
     let pokemon_image;
     if(pokemon.pokemon_id <= 9) {
         pokemon_image = "00" + pokemon.pokemon_id + ".webp";
-    } else if(pokemon.pokemon_id < 99) {
+    } else if(pokemon.pokemon_id <= 99) {
         pokemon_image = "0" + pokemon.pokemon_id + ".webp";
     } else {
         pokemon_image = pokemon.pokemon_id + ".webp";
