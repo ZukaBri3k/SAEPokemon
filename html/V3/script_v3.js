@@ -94,7 +94,7 @@ desactiverBouton();
 
 function showPokemonDetails(event) {
     const pokemonId = event.currentTarget.getAttribute('data-pokemon-id');
-    const pokemon = Pokemon.all_pokemons[pokemonId];
+    const pokemon = Pokemon.all_pokemons[pokemonId - 1];
 
     const modal = document.getElementById("pokemonDetails");
     const modalContent = document.getElementById("pokemonName");
