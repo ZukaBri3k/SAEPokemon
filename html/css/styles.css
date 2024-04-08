@@ -119,4 +119,20 @@ main #btnPage button:hover:not([disabled]) {
 }
 #pokemonImage {
   width: 17%;
+}
+main #filtres {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
+main #filtres select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid teal;
+}
+main #filtres input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid teal;
 }/*# sourceMappingURL=styles.css.map */
