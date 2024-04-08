@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="../data/charged_moves.js"></script>
+    <script defer src="../data/cp_multiplier.js"></script>
+    <script defer src="../data/fast_moves.js"></script>
+    <script defer src="../data/generation.js"></script>
+    <script defer src="../data/pokemon_moves.js"></script>
+    <script defer src="../data/pokemon_type.js"></script>
+    <script defer src="../data/pokemon.js"></script>
+    <script defer src="../data/type_effectiveness.js"></script>
+    <script defer src="../data/class_type.js"></script>
+    <script defer src="../data/class_attack.js"></script>
+    <script defer src="../data/class_pokemon.js"></script>
+    <script defer src="../data/jquery-3.7.1.min.js"></script>
+    <script defer src="script_v3.js"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Pokemon SAE</h1>
+    </header>
+
+    <main class="main">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Pokemon ID</th>
+                    <th>Génération</th>
+                    <th>Type</th>
+                    <th>Defense</th>
+                    <th>Stamina</th>
+                    <th>Attaque</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                
+            </tbody>
+        </table>
+        <div id="btnPage">
+            <button id="previousPage"><- Précédent</button>
+            <button id="nextPage">Suivant -></button>
+        </div>
+
+        <!-- Modal pour afficher les détails du Pokémon -->
+        <div id="pokemonDetails" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeModal">&times;</span>
+                <h2 id="pokemonName"></h2>
+                <img id="pokemonImage">
+                <div>
+                    <h3>Attaques:</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Moves name</th>
+                                <th>Critical Chance</th>
+                                <th>Duration</th>
+                                <th>Energy Delta</th>
+                                <th>Power</th>
+                                <th>Stamina Loss Scaler</th>
+                                <th>Type</th>
+                                <th>Charged</th>
+                                <th>Fast</th>
+                            </tr>
+                        </thead>
+                        <tbody id="attackDetails">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <footer>
+        <div>
+            <p>SAE Semestre 4</p>
+            <em>DUMERCHAT Kyrill / PENVEN Ewan</em>
+        </div>
+    </footer>
+</body>
+</html>
