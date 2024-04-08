@@ -33,9 +33,19 @@ function createTableau(pokemon) {
     return tableau;
 }
 
-const allPokemons = Pokemon.all_pokemons;
-allPokemons.forEach(pokemon => {
-    const card = createTableau(pokemon);
-    let main = document.querySelector('tbody');
-    main.appendChild(card);
-});
+function displayTable(allPokemons) {
+    allPokemons.forEach(pokemon => {
+        const card = createTableau(pokemon);
+        let main = document.querySelector('tbody');
+        main.appendChild(card);
+    });
+}
+
+function clearTable() {
+    let tbody = document.querySelector('tbody');
+    
+    tbody.innerHTML = '';
+}
+
+let allPokemons = Pokemon.all_pokemons;
+displayTable(allPokemons);

@@ -80,7 +80,7 @@ class Pokemon {
                     }
                 })
     
-                all_pokemons[p.pokemon_id] = new Pokemon(p.pokemon_id, p.pokemon_name, p.base_stamina, p.base_defense, p.base_attack, charged_moves_pokemon, fast_moves_pokemon, type, generationPokemon);
+                all_pokemons.push(new Pokemon(p.pokemon_id, p.pokemon_name, p.base_stamina, p.base_defense, p.base_attack, charged_moves_pokemon, fast_moves_pokemon, type, generationPokemon));
             }
         })
     

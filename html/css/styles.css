@@ -76,4 +76,20 @@ main #btnPage button:hover:not([disabled]) {
   background-color: teal;
   color: white;
   transition: 0.4s;
+}
+main #filtres {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
+main #filtres select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid teal;
+}
+main #filtres input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid teal;
 }/*# sourceMappingURL=styles.css.map */

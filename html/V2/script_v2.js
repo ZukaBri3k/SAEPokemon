@@ -40,23 +40,23 @@ function afficherPage() {
     let tbody = document.querySelector('tbody');
     tbody.innerHTML = '';
     
-    for(let i = (currentPage * itemsPerPage) + 1; i < ((currentPage + 1) * itemsPerPage) + 1; i++) {
-        if(Pokemon.all_pokemons[i] !== undefined) {
-            createTableau(Pokemon.all_pokemons[i]);
+    for(let i = (currentPage * itemsPerPage); i < ((currentPage + 1) * itemsPerPage); i++) {
+        if(allPokemons[i] !== undefined) {
+            createTableau(allPokemons[i]);
         }
     }
 }
 
-afficherPage()
+afficherPage(Pokemon.all_pokemons)
 
 document.getElementById('previousPage').addEventListener('click', previousPage);
 document.getElementById('nextPage').addEventListener('click', nextPage);
 // Function to go to the next page
 function nextPage() {
-    if (currentPage < Math.floor(Pokemon.all_pokemons.length / itemsPerPage)) {
+    if (currentPage < Math.floor(allPokemons.length / itemsPerPage)) {
         currentPage++;
         desactiverBouton();
-        afficherPage();
+        afficherPage(allPokemons);
     }
 }
 
@@ -65,7 +65,7 @@ function previousPage() {
     if (currentPage > 0) {
         currentPage--;
         desactiverBouton();
-        afficherPage();
+        afficherPage(allPokemons);
     }
 }
 
@@ -75,14 +75,13 @@ let boutonRetour = document.getElementById('previousPage');
 
 // Créez une fonction pour désactiver le bouton lorsque variableA est à zéro
 function desactiverBouton() {
-    console.log("OOOKAY")
     if (currentPage === 0) {
         boutonRetour.disabled = true;
     } else {
         boutonRetour.disabled = false;
     }
     
-    if (currentPage === Math.floor(Pokemon.all_pokemons.length / itemsPerPage)) {
+    if (currentPage === Math.floor(allPokemons.length / itemsPerPage)) {
         boutonSuivant.disabled = true;
     } else {
         boutonSuivant.disabled = false;

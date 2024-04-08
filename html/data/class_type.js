@@ -1,6 +1,6 @@
 class Type {
 
-    static all_types = Type.import_type();   
+    static all_types = Object.keys(type_effectiveness);   
  
     constructor(
         type
