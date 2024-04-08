@@ -51,7 +51,6 @@ afficherPage()
 
 document.getElementById('previousPage').addEventListener('click', previousPage);
 document.getElementById('nextPage').addEventListener('click', nextPage);
-// Function to go to the next page
 function nextPage() {
     if (currentPage < Math.floor(Pokemon.all_pokemons.length / itemsPerPage)) {
         currentPage++;
@@ -60,7 +59,6 @@ function nextPage() {
     }
 }
 
-// Function to go to the previous page
 function previousPage() {
     if (currentPage > 0) {
         currentPage--;
@@ -69,11 +67,9 @@ function previousPage() {
     }
 }
 
-// Sélectionnez votre bouton
 let boutonSuivant = document.getElementById('nextPage');
 let boutonRetour = document.getElementById('previousPage');
 
-// Créez une fonction pour désactiver le bouton lorsque variableA est à zéro
 function desactiverBouton() {
     console.log("OOOKAY")
     if (currentPage === 0) {
