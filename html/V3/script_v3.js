@@ -1,98 +1,4 @@
-let currentPage = 0;
-const itemsPerPage = 25;
-
-function createTableau(pokemon) {
-    const tableau = document.createElement('tr');
-    tableau.classList.add('tr');
-
-    // Définition de l'attribut data-pokemon-id
-    tableau.setAttribute('data-pokemon-id', pokemon.pokemon_id);
-
-    let pokemon_image;
-    if(pokemon.pokemon_id <= 9) {
-        pokemon_image = "00" + pokemon.pokemon_id + ".webp";
-    } else if(pokemon.pokemon_id <= 99) {
-        pokemon_image = "0" + pokemon.pokemon_id + ".webp";
-    } else {
-        pokemon_image = pokemon.pokemon_id + ".webp";
-    }
-
-    let type = '';
-    pokemon.type.forEach(t => {
-        type += `${t.type}`;
-        if(t != pokemon.type[pokemon.type.length - 1]) {
-            type += ' | ';
-        }
-    });
-
-    tableau.innerHTML = `
-        <td class="name">${pokemon.pokemon_name}</td>
-        <td class="id">${pokemon.pokemon_id}</td>
-        <td class="generation">${pokemon.generation}</td>
-        <td class="type">${type}</td>
-        <td class="defense">${pokemon.base_stamina}</td>
-        <td class="stamina">${pokemon.base_stamina}</td>
-        <td class="attaque">${pokemon.base_attack}</td>
-        <td><img class="card-image" src="../webp/images/${pokemon_image}" alt="pokemon"></td>
-    `;
-
-    tableau.addEventListener('click', showPokemonDetails);
-
-    tbody.appendChild(tableau);
-}
-
-
-function afficherPage() {
-    let tbody = document.querySelector('tbody');
-    tbody.innerHTML = '';
-    
-    for(let i = (currentPage * itemsPerPage) + 1; i < ((currentPage + 1) * itemsPerPage) + 1; i++) {
-        if(Pokemon.all_pokemons[i] !== undefined) {
-            createTableau(Pokemon.all_pokemons[i]);
-        }
-    }
-}
-
-afficherPage()
-
-document.getElementById('previousPage').addEventListener('click', previousPage);
-document.getElementById('nextPage').addEventListener('click', nextPage);
-function nextPage() {
-    if (currentPage < Math.floor(Pokemon.all_pokemons.length / itemsPerPage)) {
-        currentPage++;
-        desactiverBouton();
-        afficherPage();
-    }
-}
-
-function previousPage() {
-    if (currentPage > 0) {
-        currentPage--;
-        desactiverBouton();
-        afficherPage();
-    }
-}
-
-let boutonSuivant = document.getElementById('nextPage');
-let boutonRetour = document.getElementById('previousPage');
-
-function desactiverBouton() {
-    if (currentPage === 0) {
-        boutonRetour.disabled = true;
-    } else {
-        boutonRetour.disabled = false;
-    }
-    
-    if (currentPage === Math.floor(Pokemon.all_pokemons.length / itemsPerPage)) {
-        boutonSuivant.disabled = true;
-    } else {
-        boutonSuivant.disabled = false;
-    }
-}
-
-desactiverBouton();
-
-function showPokemonDetails(event) {
+function voirPokemonDetails(event) {
     document.body.style.overflow = 'hidden';
     const pokemonId = event.currentTarget.getAttribute('data-pokemon-id');
     const pokemon = Pokemon.all_pokemons[pokemonId - 1];
@@ -101,25 +7,28 @@ function showPokemonDetails(event) {
     const modalContent = document.getElementById("pokemonName");
     const attackDetails = document.getElementById("attackDetails");
 
-    modalContent.textContent = `Détails de ${pokemon.pokemon_name}`;
+    let pokemonTout = allPokemons.find(pokemon => pokemonId == pokemon.pokemon_id);
+    console.log(pokemonTout);
+
+    modalContent.textContent = `Détails de ${pokemonTout.pokemon_name}`;
 
     let pokemon_image;
-    if(pokemon.pokemon_id <= 9) {
-        pokemon_image = "00" + pokemon.pokemon_id + ".webp";
-    } else if(pokemon.pokemon_id <= 99) {
-        pokemon_image = "0" + pokemon.pokemon_id + ".webp";
+    if(pokemonId <= 9) {
+        pokemon_image = "00" + pokemonId + ".webp";
+    } else if(pokemonId <= 99) {
+        pokemon_image = "0" + pokemonId + ".webp";
     } else {
-        pokemon_image = pokemon.pokemon_id + ".webp";
+        pokemon_image = pokemonId + ".webp";
     }
 
     const pokemonImageElement = document.getElementById("pokemonImage");
     pokemonImageElement.src = `../webp/images/${pokemon_image}`;
-    pokemonImageElement.alt = pokemon.pokemon_name;
+    pokemonImageElement.alt = pokemonTout.pokemon_name;
 
     let attackHTML = "";
 
-    if (pokemon.charged_moves.length > 0) {
-        pokemon.charged_moves.forEach(move => {
+    if (pokemonTout.charged_moves.length > 0) {
+        pokemonTout.charged_moves.forEach(move => {
             attackHTML += "<tr>";
             attackHTML += `<td>${move.name}</td>`;
             attackHTML += `<td>${move.critical_chance}</td>`;
@@ -134,8 +43,8 @@ function showPokemonDetails(event) {
         });
     }
 
-    if (pokemon.fast_moves.length > 0) {
-        pokemon.fast_moves.forEach(move => {
+    if (pokemonTout.fast_moves.length > 0) {
+        pokemonTout.fast_moves.forEach(move => {
             attackHTML += "<tr>";
             attackHTML += `<td>${move.name}</td>`;
             attackHTML += `<td>${move.critical_chance}</td>`;

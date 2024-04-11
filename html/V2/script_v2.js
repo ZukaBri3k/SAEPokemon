@@ -3,8 +3,10 @@ const itemsPerPage = 25;
 
 function createTableau(pokemon) {
     const tableau = document.createElement('tr');
-    tbody.appendChild(tableau);
     tableau.classList.add('tr');
+
+    // Définition de l'attribut data-pokemon-id
+    tableau.setAttribute('data-pokemon-id', pokemon.pokemon_id);
 
     let pokemon_image;
     if(pokemon.pokemon_id <= 9) {
@@ -33,7 +35,10 @@ function createTableau(pokemon) {
         <td class="attaque">${pokemon.base_attack}</td>
         <td><img class="card-image" src="../webp/images/${pokemon_image}" alt="pokemon"></td>
     `;
-    return tableau;
+
+    tableau.addEventListener('click', showPokemonDetails);
+
+    tbody.appendChild(tableau);
 }
 
 function afficherPage() {
@@ -85,3 +90,9 @@ function desactiverBouton() {
 }
 
 desactiverBouton();
+
+function showPokemonDetails(event) {
+    if (typeof voirPokemonDetails === 'function') {
+        voirPokemonDetails(event);
+    }
+}
