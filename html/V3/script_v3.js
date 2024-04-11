@@ -93,6 +93,7 @@ function desactiverBouton() {
 desactiverBouton();
 
 function showPokemonDetails(event) {
+    document.body.style.overflow = 'hidden';
     const pokemonId = event.currentTarget.getAttribute('data-pokemon-id');
     const pokemon = Pokemon.all_pokemons[pokemonId - 1];
 
@@ -158,6 +159,6 @@ const closeModalButton = document.getElementById("closeModal");
 
 closeModalButton.addEventListener("click", function() {
     const modal = document.getElementById("pokemonDetails");
-    
+    document.body.style.overflow = 'auto';
     modal.style.display = "none";
 });
