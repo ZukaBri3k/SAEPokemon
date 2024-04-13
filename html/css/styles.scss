@@ -41,6 +41,13 @@ main {
         margin: 10px;
         font-size: 1.2em;
     }
+    #detailsPokemon {
+        tr {
+            :nth-child(odd) {
+                background-color: #e0e0e0;
+            }
+        }
+    }
 
     table {
         width: 100%;
@@ -53,10 +60,6 @@ main {
         tr {
             border-bottom: 2px solid black;
 
-            :nth-child(odd) {
-                background-color: #e0e0e0;
-            }
-
             :nth-child(even) {
                 background-color: #f2f2f2;
             }
@@ -68,6 +71,21 @@ main {
         th, td {
             padding: 10px;
             border: 1px solid black;
+        }
+
+        thead {
+            th {
+                div {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    
+                }
+                svg {
+                    cursor: pointer;
+                    width: 20px;
+                }
+            }
         }
     }
 

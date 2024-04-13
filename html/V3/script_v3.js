@@ -8,7 +8,6 @@ function voirPokemonDetails(event) {
     const attackDetails = document.getElementById("attackDetails");
 
     let pokemonTout = allPokemons.find(pokemon => pokemonId == pokemon.pokemon_id);
-    console.log(pokemonTout);
 
     modalContent.textContent = `Détails de ${pokemonTout.pokemon_name}`;
 

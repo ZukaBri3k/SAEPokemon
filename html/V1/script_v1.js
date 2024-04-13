@@ -25,7 +25,7 @@ function createTableau(pokemon) {
         <td class="id">${pokemon.pokemon_id}</td>
         <td class="generation">${pokemon.generation}</td>
         <td class="type">${type}</td>
-        <td class="defense">${pokemon.base_stamina}</td>
+        <td class="defense">${pokemon.base_defense}</td>
         <td class="stamina">${pokemon.base_stamina}</td>
         <td class="attaque">${pokemon.base_attack}</td>
         <td><img class="card-image" src="../webp/images/${pokemon_image}" alt="pokemon"></td>

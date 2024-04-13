@@ -35,6 +35,9 @@ main p {
   margin: 10px;
   font-size: 1.2em;
 }
+main #detailsPokemon tr :nth-child(odd) {
+  background-color: #e0e0e0;
+}
 main table {
   width: 100%;
   text-align: left;
@@ -46,9 +49,6 @@ main table {
 main table tr {
   border-bottom: 2px solid black;
 }
-main table tr :nth-child(odd) {
-  background-color: #e0e0e0;
-}
 main table tr :nth-child(even) {
   background-color: #f2f2f2;
 }
@@ -58,6 +58,15 @@ main table tr td {
 main table th, main table td {
   padding: 10px;
   border: 1px solid black;
+}
+main table thead th div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+main table thead th svg {
+  cursor: pointer;
+  width: 20px;
 }
 main #btnPage {
   display: flex;
