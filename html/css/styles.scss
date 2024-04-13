@@ -67,7 +67,12 @@ main {
             td {
                 padding: 5px;
             }
+
+            &:hover {
+                cursor: pointer;
+            }
         }
+
         th, td {
             padding: 10px;
             border: 1px solid black;
@@ -79,7 +84,7 @@ main {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    
+                    font-weight: normal;
                 }
                 svg {
                     cursor: pointer;

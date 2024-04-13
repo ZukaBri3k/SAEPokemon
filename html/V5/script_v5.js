@@ -1,7 +1,6 @@
 function arrowSortAsc(id) {
     let conteneur = document.getElementById(id);
     conteneur = conteneur.querySelector('div');
-    console.log(conteneur);
     let arrow = conteneur.querySelector('svg');
 
     conteneur.removeChild(arrow);
@@ -20,7 +19,10 @@ function arrowSortDesc(id) {
 function arrowReset() {
     let conteneurs = document.querySelectorAll('.sort');
     conteneurs.forEach((conteneur) => {
+
+        conteneur.style.backgroundColor = '';
         conteneur = conteneur.querySelector('div');
+        conteneur.style.fontWeight = 'normal';
         let arrow = conteneur.querySelector('svg');
         if(arrow) {
             conteneur.removeChild(arrow);
@@ -60,6 +62,8 @@ let estTrieNom = true
 
 triNom.addEventListener('click', function() {
     arrowReset();
+    triNom.style.backgroundColor = 'teal';
+    triNom.querySelector("div").style.fontWeight = 'bold';
 
     if(estTrieNom) {
         estTrieNom = false
@@ -95,6 +99,8 @@ let estTrieId = true
 
 triId.addEventListener('click', function() {
     arrowReset();
+    triId.style.backgroundColor = 'teal';
+    triId.querySelector("div").style.fontWeight = 'bold';
 
     if(estTrieId) {
         estTrieId = false
@@ -165,6 +171,8 @@ let estTrieGeneration = true
 
 triGeneration.addEventListener('click', function() {
     arrowReset();
+    triGeneration.style.backgroundColor = 'teal';
+    triGeneration.querySelector("div").style.fontWeight = 'bold';
 
     if(estTrieGeneration) {
         estTrieGeneration = false
@@ -249,6 +257,8 @@ let estTrieDefense = true
 
 triDefense.addEventListener('click', function() {
     arrowReset();
+    triDefense.style.backgroundColor = 'teal';
+    triDefense.querySelector("div").style.fontWeight = 'bold';
 
     if(estTrieDefense) {
         estTrieDefense = false
@@ -335,6 +345,8 @@ let estTrieStamina = true
 
 triStamina.addEventListener('click', function() {
     arrowReset();
+    triStamina.style.backgroundColor = 'teal';
+    triStamina.querySelector("div").style.fontWeight = 'bold';
 
     if(estTrieStamina) {
         estTrieStamina = false
@@ -421,6 +433,8 @@ let estTrieAttack = true
 
 triAttack.addEventListener('click', function() {
     arrowReset();
+    triAttack.style.backgroundColor = 'teal';
+    triAttack.querySelector("div").style.fontWeight = 'bold';
 
     if(estTrieAttack) {
         estTrieAttack = false
@@ -430,6 +444,79 @@ triAttack.addEventListener('click', function() {
         estTrieAttack = true
         sortPokemonByAttackDesc();
         arrowSortDesc('attack');
+    }
+
+    clearTable();
+    afficherPage();
+    desactiverBouton();
+})
+
+
+//tri par type
+
+function sortPokemonByTypeAsc() {
+    let types = Type.all_types
+    let res = []
+    let tmp
+
+    types.forEach((type) => {
+        tmp = allPokemons.filter((p) => p.type[0].type == type)
+        tmp = tmp.sort((a, b) => {
+            if(a.pokemon_name < b.pokemon_name) { 
+                return -1
+            } else if(a.pokemon_name > b.pokemon_name) {
+                return 1
+            } else {
+                return 0
+            }
+        })
+        res = res.concat(tmp)
+    })
+
+    allPokemons = []
+    allPokemons = allPokemons.concat(res)
+}
+
+function sortPokemonByTypeDesc() {
+    let types = Type.all_types
+    let res = []
+    let tmp
+
+    for(let i = types.length - 1; i >= 0; i--) {
+        let type = types[i]
+        tmp = allPokemons.filter((p) => p.type[0].type == type)
+        tmp = tmp.sort((a, b) => {
+            if(a.pokemon_name < b.pokemon_name) { 
+                return -1
+            } else if(a.pokemon_name > b.pokemon_name) {
+                return 1
+            } else {
+                return 0
+            }
+        })
+        res = res.concat(tmp)
+    }
+    
+    allPokemons = []
+    allPokemons = allPokemons.concat(res)
+}
+
+let triType = document.getElementById('typeTri');
+let estTrieType = true
+
+triType.addEventListener('click', function() {
+    arrowReset();
+    triType.style.backgroundColor = 'teal';
+    triType.querySelector("div").style.fontWeight = 'bold';
+
+    if(estTrieType) {
+        estTrieType = false
+        sortPokemonByTypeAsc();
+        arrowSortAsc('typeTri');
+    } else {
+        estTrieType = true
+        sortPokemonByTypeDesc();
+        arrowSortDesc('typeTri');
     }
 
     clearTable();
